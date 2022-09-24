@@ -3,8 +3,6 @@ package com.andreluiskg.cliente;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -17,12 +15,9 @@ public class ClienteResource {
 	
 	@GET
 	@Path("newCliente")
-	public Response newCliente() {
+	public String newCliente() {
 		Cliente cliente = Cliente.of(99, "Remoto");
-		
-		Response response = clienteService.newCliente(cliente);
-		
-		return Response.status(Status.CREATED).entity(response).build();
+		return clienteService.newCliente(cliente);
 	}
 
 }

@@ -9,21 +9,27 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import com.andreluiskg.cliente.Cliente;
+import com.andreluiskg.cliente.ClienteService;
 
 @Path("/reserva-cli")
 public class ReservaResource {
-	
+
 	@Inject
 	@RestClient
 	ReservaService reservaService;
-	
+
+	@Inject
+	@RestClient
+	ClienteService clienteService;
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/newReserva")
-	public String newReserva() {		
-		Cliente cliente = Cliente.of(2, "");
-		
-		return reservaService.newReserva(cliente);
+	@Path("newReserva")
+	public String newReserva() {
+		Cliente cliente = clienteService.findById(2);
+		Reserva reserva = Reserva.of(0, cliente);
+
+		return reservaService.newReserva(reserva);
 	}
 
 }
