@@ -1,23 +1,21 @@
 package com.andreluiskg.reserva;
 
-import com.andreluiskg.cliente.Cliente;
-
 public class Reserva {
 
 	private long id;
-	private Cliente cliente;
+	private long idCliente;
 
 	public Reserva() {
 
 	}
 
-	private Reserva(long id, Cliente cliente) {
+	private Reserva(long id, long idCliente) {
 		this.id = id;
-		this.cliente = cliente;
+		this.idCliente = idCliente;
 	}
 
-	public static Reserva of(long id, Cliente cliente) {
-		return new Reserva(id, cliente);
+	public static Reserva of(long id, long idCliente) {
+		return new Reserva(id, idCliente);
 	}
 
 	public long getId() {
@@ -28,12 +26,12 @@ public class Reserva {
 		this.id = id;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setIdCliente(long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 }
